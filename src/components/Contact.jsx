@@ -1,10 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { icons } from 'lucide-react';
-const GitHub = icons.GitHub;
-const LinkedIn = icons.LinkedIn;  // Note: capital I and N
-const Mail = icons.Mail;
-const ArrowUpRight = icons.ArrowUpRight;
+import { GitHub, LinkedIn, Mail, ArrowUpRight } from 'lucide-react';
 import { personalInfo } from '../data/personalInfo';
 
 export default function Contact({ isDark }) {
@@ -42,7 +38,7 @@ export default function Contact({ isDark }) {
                   : 'border-black hover:bg-black hover:text-white'
               }`}
             >
-              <Linkedin className="w-6 h-6" />
+              <LinkedIn className="w-6 h-6" />
               LinkedIn
             </a>
           </div>

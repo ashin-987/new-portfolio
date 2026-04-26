@@ -1,10 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { icons } from 'lucide-react';
-const GitHub = icons.GitHub;
-const LinkedIn = icons.LinkedIn;  // Note: capital I and N
-const Mail = icons.Mail;
-const Terminal = icons.Terminal;
+import { GitHub, LinkedIn, Mail, Terminal } from 'lucide-react';
 import { personalInfo } from '../data/personalInfo';
 
 export default function Hero({ isDark }) {
