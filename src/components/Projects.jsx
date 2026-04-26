@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, ExternalLink, GitHub } from 'lucide-react';
+import { icons } from 'lucide-react';
+const GitHub = icons.GitHub;
+const Code2 = icons.Code2;  
+const ExternalLink = icons.ExternalLink;
 import { projects } from '../data/projects';
 
 export default function Projects({ isDark }) {

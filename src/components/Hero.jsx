@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHub, Linkedin, Mail, Terminal } from 'lucide-react';
+import { icons } from 'lucide-react';
+const GitHub = icons.GitHub;
+const LinkedIn = icons.LinkedIn;  // Note: capital I and N
+const Mail = icons.Mail;
+const Terminal = icons.Terminal;
 import { personalInfo } from '../data/personalInfo';
 
 export default function Hero({ isDark }) {
@@ -79,7 +83,7 @@ export default function Hero({ isDark }) {
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <Linkedin className="w-6 h-6" />
+                <LinkedIn className="w-6 h-6" />
               </a>
               <a 
                 href={`mailto:${personalInfo.email}`}
