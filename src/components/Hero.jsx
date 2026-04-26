@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { GitHub, Linkedin, Mail, Terminal } from 'lucide-react';
 import { personalInfo } from '../data/personalInfo';
 
 export default function Hero({ isDark }) {
@@ -69,7 +69,7 @@ export default function Hero({ isDark }) {
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <Github className="w-6 h-6" />
+                <GitHub className="w-6 h-6" />
               </a>
               <a 
                 href={personalInfo.social.linkedin} 
