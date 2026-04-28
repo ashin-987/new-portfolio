@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi'; 
 import { personalInfo } from '../data/personalInfo';
 
 export default function Contact({ isDark }) {
@@ -25,7 +26,7 @@ export default function Contact({ isDark }) {
               href={`mailto:${personalInfo.email}`}
               className="px-10 py-5 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-xl rounded-lg border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all inline-flex items-center gap-3"
             >
-              <Mail className="w-6 h-6" />
+              <FaEnvelope className="w-6 h-6" />
               Send Email
             </a>
             <a
@@ -38,7 +39,7 @@ export default function Contact({ isDark }) {
                   : 'border-black hover:bg-black hover:text-white'
               }`}
             >
-              <Linkedin className="w-6 h-6" />
+              <FaLinkedin className="w-6 h-6" />
               LinkedIn
             </a>
           </div>
@@ -50,9 +51,9 @@ export default function Contact({ isDark }) {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-neutral-400 hover:text-orange-500 transition-all"
             >
-              <Github className="w-6 h-6" />
+              <FaGithub className="w-6 h-6" />
               <span className="font-bold">GitHub</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
             <a
               href={personalInfo.social.linkedin}
@@ -60,9 +61,9 @@ export default function Contact({ isDark }) {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-neutral-400 hover:text-orange-500 transition-all"
             >
-              <Linkedin className="w-6 h-6" />
+              <FaLinkedin className="w-6 h-6" />
               <span className="font-bold">LinkedIn</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
           </div>
         </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Code2, Externallink } from 'lucide-react';
+import { FaGithub, FaCode, FaExternalLinkAlt } from 'react-icons/fa';
 import { projects } from '../data/projects';
 
 export default function Projects({ isDark }) {
@@ -14,7 +14,7 @@ export default function Projects({ isDark }) {
           className="mb-16"
         >
           <h2 className="text-6xl md:text-7xl font-black mb-4 flex items-center gap-4">
-            <Code2 className="w-12 h-12 text-orange-500" />
+            <FaCode className="w-12 h-12 text-orange-500" />
             FEATURED PROJECTS
           </h2>
           <p className="text-xl text-neutral-400 font-medium">
@@ -46,7 +46,7 @@ export default function Projects({ isDark }) {
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg border-2 border-neutral-700 hover:border-orange-500 transition-all"
                     >
-                      <Externallink className="w-5 h-5" />
+                      <FaExternalLinkAlt className="w-5 h-5" />
                     </a>
                     <a 
                       href={project.github}
@@ -54,7 +54,7 @@ export default function Projects({ isDark }) {
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg border-2 border-neutral-700 hover:border-orange-500 transition-all"
                     >
-                      <Github className="w-5 h-5" />
+                      <FaGithub className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

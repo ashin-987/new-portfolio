@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from 'react-icons/fa';
 import { personalInfo } from '../data/personalInfo';
 
 export default function Hero({ isDark }) {
@@ -69,7 +69,7 @@ export default function Hero({ isDark }) {
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <Github className="w-6 h-6" />
+                <FaGithub className="w-6 h-6" />
               </a>
               <a 
                 href={personalInfo.social.linkedin} 
@@ -79,7 +79,7 @@ export default function Hero({ isDark }) {
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <Linkedin className="w-6 h-6" />
+                <FaLinkedin className="w-6 h-6" />
               </a>
               <a 
                 href={`mailto:${personalInfo.email}`}
@@ -87,7 +87,7 @@ export default function Hero({ isDark }) {
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <Mail className="w-6 h-6" />
+                <FaEnvelope className="w-6 h-6" />
               </a>
             </div>
           </motion.div>
@@ -103,7 +103,7 @@ export default function Hero({ isDark }) {
             }`}>
               <div className="space-y-4 font-mono text-sm">
                 <div className="flex items-center gap-2 text-orange-500">
-                  <Terminal className="w-4 h-4" />
+                  <FaTerminal className="w-4 h-4" />
                   <span>~/{personalInfo.username}</span>
                 </div>
                 <div className="space-y-2">
