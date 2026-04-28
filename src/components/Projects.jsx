@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHub, Code2, ExternalLink } from 'lucide-react';
+import { Github, Code2, Externallink } from 'lucide-react';
 import { projects } from '../data/projects';
 
 export default function Projects({ isDark }) {
@@ -46,7 +46,7 @@ export default function Projects({ isDark }) {
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg border-2 border-neutral-700 hover:border-orange-500 transition-all"
                     >
-                      <ExternalLink className="w-5 h-5" />
+                      <Externallink className="w-5 h-5" />
                     </a>
                     <a 
                       href={project.github}
@@ -54,7 +54,7 @@ export default function Projects({ isDark }) {
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg border-2 border-neutral-700 hover:border-orange-500 transition-all"
                     >
-                      <GitHub className="w-5 h-5" />
+                      <Github className="w-5 h-5" />
                     </a>
                   </div>
                 </div>

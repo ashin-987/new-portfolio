@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GitHub, LinkedIn, Mail, ArrowUpRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react';
 import { personalInfo } from '../data/personalInfo';
 
 export default function Contact({ isDark }) {
@@ -38,7 +38,7 @@ export default function Contact({ isDark }) {
                   : 'border-black hover:bg-black hover:text-white'
               }`}
             >
-              <LinkedIn className="w-6 h-6" />
+              <Linkedin className="w-6 h-6" />
               LinkedIn
             </a>
           </div>
@@ -50,7 +50,7 @@ export default function Contact({ isDark }) {
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-neutral-400 hover:text-orange-500 transition-all"
             >
-              <GitHub className="w-6 h-6" />
+              <Github className="w-6 h-6" />
               <span className="font-bold">GitHub</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
