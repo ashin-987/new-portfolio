@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export function useTheme() {
+export default function useTheme() {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;

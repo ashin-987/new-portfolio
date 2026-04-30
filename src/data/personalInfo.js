@@ -1,20 +1,21 @@
 export const personalInfo = {
-  name: "YOUR FULL NAME",
-  username: "your-username",
-  role: "Full Stack Developer",
+  name: 'Your Name',
+  username: 'yourname',
+  role: 'Full Stack Developer',
+  availability: 'Available for work',
   title: {
-    line1: "FULL STACK",
-    line2: "DEVELOPER"
+    line1: 'FULL STACK',
+    line2: 'DEVELOPER',
   },
-  availability: "Available for opportunities",
-  bio: "Building scalable web applications with modern technologies. Specialized in React, Node.js, and cloud architecture.",
-  email: "your.email@gmail.com",
+  bio: 'Passionate developer crafting digital experiences with modern web technologies. Specialized in building scalable applications that make a difference.',
+  email: 'your.email@example.com',
   social: {
-    github: "https://github.com/YOUR-USERNAME",
-    linkedin: "https://linkedin.com/in/YOUR-PROFILE",
+    github: 'https://github.com/yourusername',
+    linkedin: 'https://linkedin.com/in/yourusername',
+    twitter: 'https://twitter.com/yourusername',
   },
   codeBlock: {
-    skills: ["React", "Node.js", "MongoDB"],
-    passion: "Building amazing products"
-  }
+    skills: ['React', 'Node.js', 'TypeScript', 'MongoDB'],
+    passion: 'Building amazing web experiences',
+  },
 };

@@ -9,12 +9,12 @@ export default function Hero({ isDark }) {
       <div className="grain absolute inset-0 pointer-events-none" />
       
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-orange-500 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-red-500 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -26,31 +26,31 @@ export default function Hero({ isDark }) {
               transition={{ delay: 0.2 }}
               className="inline-block mb-4"
             >
-              <span className="px-4 py-2 bg-orange-500/20 border-2 border-orange-500 rounded-full text-orange-500 font-mono text-sm font-bold inline-flex items-center gap-2">
+              <span className="px-3 sm:px-4 py-2 bg-orange-500/20 border-2 border-orange-500 rounded-full text-orange-500 font-mono text-xs sm:text-sm font-bold inline-flex items-center gap-2">
                 <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
                 {personalInfo.availability}
               </span>
             </motion.div>
 
-            <h1 className="text-7xl md:text-8xl font-black leading-none mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-none mb-4 sm:mb-6">
               <span className="block">{personalInfo.title.line1}</span>
               <span className="text-gradient block">{personalInfo.title.line2}</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-neutral-400 mb-8 font-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-400 mb-6 sm:mb-8 font-medium leading-relaxed">
               {personalInfo.bio}
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
               <a
                 href="#contact"
-                className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg rounded-lg border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-base sm:text-lg rounded-lg border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[3px] hover:translate-y-[3px] transition-all text-center"
               >
                 Get In Touch
               </a>
               <a
                 href="#projects"
-                className={`px-8 py-4 font-bold text-lg rounded-lg border-2 transition-all ${
+                className={`px-6 sm:px-8 py-3 sm:py-4 font-bold text-base sm:text-lg rounded-lg border-2 transition-all text-center ${
                   isDark 
                     ? 'border-white hover:bg-white hover:text-black' 
                     : 'border-black hover:bg-black hover:text-white'
@@ -60,34 +60,37 @@ export default function Hero({ isDark }) {
               </a>
             </div>
 
-            <div className="flex gap-4 mt-8">
+            <div className="flex gap-3 sm:gap-4 mt-6 sm:mt-8">
               <a 
                 href={personalInfo.social.github} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className={`p-3 rounded-lg border-2 transition-all ${
+                aria-label="GitHub Profile"
+                className={`p-3 sm:p-4 rounded-lg border-2 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center ${
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <FaGithub className="w-6 h-6" />
+                <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a 
                 href={personalInfo.social.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className={`p-3 rounded-lg border-2 transition-all ${
+                aria-label="LinkedIn Profile"
+                className={`p-3 sm:p-4 rounded-lg border-2 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center ${
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <FaLinkedin className="w-6 h-6" />
+                <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a 
                 href={`mailto:${personalInfo.email}`}
-                className={`p-3 rounded-lg border-2 transition-all ${
+                aria-label="Email"
+                className={`p-3 sm:p-4 rounded-lg border-2 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center ${
                   isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
                 }`}
               >
-                <FaEnvelope className="w-6 h-6" />
+                <FaEnvelope className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
             </div>
           </motion.div>
@@ -96,23 +99,23 @@ export default function Hero({ isDark }) {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="hidden md:block"
+            className="hidden sm:block"
           >
-            <div className={`relative p-8 rounded-3xl border-4 ${
+            <div className={`relative p-6 sm:p-8 rounded-3xl border-4 ${
               isDark ? 'border-neutral-800 bg-neutral-900' : 'border-neutral-300 bg-white'
             }`}>
-              <div className="space-y-4 font-mono text-sm">
+              <div className="space-y-2 sm:space-y-4 font-mono text-xs sm:text-sm">
                 <div className="flex items-center gap-2 text-orange-500">
-                  <FaTerminal className="w-4 h-4" />
+                  <FaTerminal className="w-3 h-3 sm:w-4 sm:h-4" />
                   <span>~/{personalInfo.username}</span>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   <p><span className="text-green-500">const</span> developer = {`{`}</p>
                   <p className="pl-4">name: <span className="text-yellow-500">'{personalInfo.name}'</span>,</p>
                   <p className="pl-4">role: <span className="text-yellow-500">'{personalInfo.role}'</span>,</p>
                   <p className="pl-4">skills: [</p>
                   {personalInfo.codeBlock.skills.map((skill, i) => (
-                    <p key={i} className="pl-8 text-yellow-500">'{skill}'{i < personalInfo.codeBlock.skills.length - 1 ? ',' : ''}</p>
+                    <p key={i} className="pl-6 sm:pl-8 text-yellow-500">'{skill}'{i < personalInfo.codeBlock.skills.length - 1 ? ',' : ''}</p>
                   ))}
                   <p className="pl-4">],</p>
                   <p className="pl-4">passion: <span className="text-yellow-500">'{personalInfo.codeBlock.passion}'</span></p>
