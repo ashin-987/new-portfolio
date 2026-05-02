@@ -1,33 +1,48 @@
 export const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform with real-time inventory management, payment processing, and an admin dashboard for managing products and orders.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
-    image: '🛒',
-    screenshot: '/projects/project1.png', // Add your screenshot URL here: '/projects/ecommerce.png'
-    color: 'from-blue-500 to-cyan-500',
-    link: 'https://demo.example.com',
-    github: 'https://github.com/yourusername/ecommerce',
+    id: 1,
+    title: "E-Commerce Platform",
+    description: "A full-featured online marketplace with real-time inventory management, payment processing, and admin dashboard. Built to handle thousands of concurrent users.",
+    screenshot: "/projects/project1.webp", // Add your actual image paths
+    
+    // NEW: Add these highlights for better impact
     highlights: [
-      'Handles 10,000+ concurrent users',
-      'Reduced page load time by 60%',
-      '99.9% uptime with AWS deployment',
+      "Reduced cart abandonment by 42% with optimized checkout flow",
+      "Implemented real-time inventory sync across 3 warehouses",
+      "Achieved 98% uptime with AWS auto-scaling infrastructure"
     ],
+    
+    // Optional: Add case study details
+    problem: "High cart abandonment rate and slow checkout process",
+    solution: "Streamlined checkout with one-click payment and progress indicators",
+    impact: {
+      metric: "Cart Abandonment",
+      before: "70%",
+      after: "28%"
+    },
+    
+    tech: ["React", "Node.js", "MongoDB", "Stripe", "AWS", "Redis"],
+    category: ["web", "fullstack"],
+    link: "https://your-project-link.com",
+    github: "https://github.com/yourusername/ecommerce"
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, team collaboration features, and advanced project tracking capabilities.',
-    tech: ['React', 'Firebase', 'Material-UI', 'Redux'],
-    image: '📋',
-    screenshot: '/projects/project2.png', // Add your screenshot URL here: '/projects/taskmanager.png'
-    color: 'from-purple-500 to-pink-500',
-    link: 'https://tasks.example.com',
-    github: 'https://github.com/yourusername/taskmanager',
+    id: 2,
+    title: "Real-Time Chat Application",
+    description: "WebSocket-based messaging platform with end-to-end encryption, file sharing, and group chat functionality. Supports 10,000+ concurrent users.",
+    screenshot: "/projects/project2.webp",
+    
     highlights: [
-      'Real-time collaboration for teams',
-      'Drag-and-drop interface',
-      'Mobile-responsive design',
+      "Built custom WebSocket server handling 10k+ concurrent connections",
+      "Implemented end-to-end encryption for secure messaging",
+      "Reduced message latency to under 50ms globally"
     ],
+    
+    tech: ["React", "Socket.io", "Express", "PostgreSQL", "Docker"],
+    category: ["web", "realtime"],
+    link: "https://your-chat-app.com",
+    github: "https://github.com/yourusername/chat-app"
   },
-  
 ];
+
+export default projects;

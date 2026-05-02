@@ -39,7 +39,7 @@ export default function MobileMenu({ isOpen, onClose, isDark }) {
             } border-l-4 ${isDark ? 'border-neutral-800' : 'border-neutral-300'}`}
           >
             {/* Header */}
-            <div className={`p-6 border-b-4 border-orange-500 ${
+            <div className={`p-6 border-b-4 border-accent-primary ${
               isDark ? 'bg-neutral-950' : 'bg-neutral-100'
             }`}>
               <div className="flex items-center justify-between">
@@ -47,7 +47,7 @@ export default function MobileMenu({ isOpen, onClose, isDark }) {
                 <button
                   onClick={onClose}
                   className={`p-3 rounded-lg border-2 transition-all min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                    isDark ? 'border-neutral-700 hover:border-orange-500' : 'border-neutral-300 hover:border-orange-500'
+                    isDark ? 'border-neutral-700 hover:border-accent-primary' : 'border-neutral-300 hover:border-accent-primary'
                   }`}
                   aria-label="Close menu"
                 >
@@ -68,22 +68,22 @@ export default function MobileMenu({ isOpen, onClose, isDark }) {
                   transition={{ delay: index * 0.1 }}
                   className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all group min-h-[60px] ${
                     isDark ? 'border-neutral-800 hover:bg-neutral-800' : 'border-neutral-200 hover:bg-neutral-100'
-                  } hover:border-orange-500`}
+                  } hover:border-accent-primary`}
                 >
-                  <item.icon className="w-6 h-6 text-orange-500 group-hover:scale-110 transition-transform flex-shrink-0" />
+                  <item.icon className="w-6 h-6 text-accent-primary group-hover:scale-110 transition-transform flex-shrink-0" />
                   <span className="text-lg font-bold">{item.label}</span>
                 </motion.a>
               ))}
             </nav>
 
             {/* Footer */}
-            <div className={`absolute bottom-0 left-0 right-0 p-6 border-t-4 border-orange-500 ${
+            <div className={`absolute bottom-0 left-0 right-0 p-6 border-t-4 border-accent-primary ${
               isDark ? 'bg-neutral-950' : 'bg-neutral-100'
             }`}>
               <a
                 href="/resume.pdf"
                 download
-                className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
+                className="w-full px-6 py-4 bg-gradient-to-r from-accent-primary to-accent-primary text-white font-bold rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" />
                 <span>Download Resume</span>

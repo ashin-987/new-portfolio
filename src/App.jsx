@@ -1,37 +1,70 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import './App.css';
+
+// Layout Components
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
+// Section Components
 import Hero from './components/Hero';
+import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Feature Components
 import CommandPalette from './components/CommandPalette';
-import useTheme from './hooks/useTheme';
-import './App.css';
+import MobileMenu from './components/MobileMenu';
 
 function App() {
-  const { isDark, toggleTheme } = useTheme();
-  const [commandPaletteOpen, setCommandPaletteOpen] = React.useState(false);
-  const [scrollProgress, setScrollProgress] = React.useState(0);
+  const [isDark, setIsDark] = useState(true);
+  const [showCommandPalette, setShowCommandPalette] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentProgress = (window.pageYOffset / totalScroll) * 100;
-      setScrollProgress(currentProgress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    const shouldBeDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    setIsDark(shouldBeDark);
+    
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
   }, []);
 
-  React.useEffect(() => {
+  // Toggle theme
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  // Command palette keyboard shortcut (Cmd/Ctrl + K)
+  useEffect(() => {
     const handleKeyDown = (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        setCommandPaletteOpen(prev => !prev);
+        setShowCommandPalette(true);
+      }
+      if (e.key === 'Escape') {
+        setShowCommandPalette(false);
+        setShowMobileMenu(false);
       }
     };
 
@@ -40,34 +73,46 @@ function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-neutral-950 text-white' : 'bg-neutral-50 text-black'} transition-colors duration-300`}>
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-red-500 z-50 origin-left"
-        style={{ scaleX: scrollProgress / 100 }}
-      />
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 transition-colors duration-300">
+      {/* Skip to content link (accessibility) */}
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
 
+      {/* Navigation */}
       <Navigation 
         isDark={isDark} 
         toggleTheme={toggleTheme}
-        openCommandPalette={() => setCommandPaletteOpen(true)}
+        onCommandPaletteOpen={() => setShowCommandPalette(true)}
+        onMobileMenuToggle={() => setShowMobileMenu(!showMobileMenu)}
       />
-      
-      <main>
+
+      {/* Mobile Menu */}
+      <MobileMenu 
+        isOpen={showMobileMenu}
+        onClose={() => setShowMobileMenu(false)}
+        isDark={isDark}
+      />
+
+      {/* Command Palette */}
+      <CommandPalette 
+        isOpen={showCommandPalette}
+        onClose={() => setShowCommandPalette(false)}
+        isDark={isDark}
+      />
+
+      {/* Main Content */}
+      <main id="main">
         <Hero isDark={isDark} />
+        <About isDark={isDark} />
         <Projects isDark={isDark} />
         <Skills isDark={isDark} />
         <Experience isDark={isDark} />
         <Contact isDark={isDark} />
       </main>
 
+      {/* Footer */}
       <Footer isDark={isDark} />
-
-      <CommandPalette 
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-        isDark={isDark}
-      />
     </div>
   );
 }

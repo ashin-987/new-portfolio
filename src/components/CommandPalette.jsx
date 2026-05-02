@@ -31,9 +31,9 @@ export default function CommandPalette({ isOpen, onClose, isDark }) {
             className="fixed top-1/4 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 px-4"
           >
             <div className={`${isDark ? 'bg-neutral-900 border-neutral-700' : 'bg-white border-neutral-200'} border-4 rounded-2xl shadow-2xl overflow-hidden`}>
-              <div className="p-6 border-b-4 border-orange-500">
+              <div className="p-6 border-b-4 border-accent-primary">
                 <div className="flex items-center gap-3">
-                  <Command className="w-5 h-5 text-orange-500" />
+                  <Command className="w-5 h-5 text-accent-primary" />
                   <span className="font-bold text-lg">Quick Navigation</span>
                 </div>
               </div>
@@ -44,8 +44,8 @@ export default function CommandPalette({ isOpen, onClose, isDark }) {
                     onClick={() => handleNavigation(item)}
                     className={`w-full text-left px-4 py-3 rounded-lg mb-2 transition-all ${
                       isDark 
-                        ? 'hover:bg-neutral-800 hover:border-l-4 hover:border-orange-500' 
-                        : 'hover:bg-neutral-100 hover:border-l-4 hover:border-orange-500'
+                        ? 'hover:bg-neutral-800 hover:border-l-4 hover:border-accent-primary' 
+                        : 'hover:bg-neutral-100 hover:border-l-4 hover:border-accent-primary'
                     }`}
                   >
                     <span className="font-semibold">{item}</span>
