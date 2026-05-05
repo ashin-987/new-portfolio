@@ -128,25 +128,35 @@ body {
   }
 }
 
-/* GRAIN TEXTURE - HIGH QUALITY */
-.grain {
-  position: relative;
-}
+/* GRAIN TEXTURE - OPTIMIZED VERSION */
+/* Only show on desktop to save mobile performance */
+@media (min-width: 768px) {
+  .grain {
+    position: relative;
+  }
 
-.grain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 1;
-}
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Simplified noise pattern - much lighter than SVG filter */
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+    /* GPU acceleration hint */
+    will-change: opacity;
+  }
 
-/* Dark mode grain */
-.dark .grain::before {
-  opacity: 0.3;
+  .dark .grain::before {
+    opacity: 0.2;
+  }
 }
 
 /* ===================================
@@ -168,6 +178,7 @@ body {
   }
 }
 
+/* OPTIMIZED: Use CSS transforms for better performance */
 /* Fade in animation */
 @keyframes fadeIn {
   from {
@@ -179,14 +190,14 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Slide up animation */
+/* Slide up animation - OPTIMIZED with transform */
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -195,19 +206,22 @@ body {
 }
 
 .animate-slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+  animation: slideUp 0.4s ease-out forwards;
 }
 
 /* ===================================
    COMPONENT UTILITIES
    =================================== */
 
-/* Card base styles */
+/* Card base styles - OPTIMIZED transitions */
 .card {
   background: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   border-radius: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /* GPU acceleration hint */
+  will-change: transform;
 }
 
 .card:hover {
@@ -219,7 +233,7 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Button base styles */
+/* Button base styles - OPTIMIZED */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -228,10 +242,12 @@ body {
   padding: 0.75rem 2rem;
   font-weight: 600;
   border-radius: 0.5rem;
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  /* GPU acceleration hint */
+  will-change: transform;
 }
 
 .btn:active {
@@ -282,7 +298,7 @@ body {
 }
 
 /* ===================================
-   LOADING SKELETON
+   LOADING SKELETON - OPTIMIZED
    =================================== */
 
 .skeleton {
@@ -306,19 +322,35 @@ body {
 }
 
 /* ===================================
-   GLASS MORPHISM EFFECT
+   GLASS MORPHISM EFFECT - OPTIMIZED
    =================================== */
 
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* Only apply backdrop-filter on desktop for better mobile performance */
+@media (min-width: 768px) {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
 }
 
-.dark .glass {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* Mobile fallback - solid background */
+@media (max-width: 767px) {
+  .glass {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .glass {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
 }
 
 /* ===================================
@@ -348,6 +380,25 @@ body {
 
 .text-fluid-3xl {
   font-size: clamp(1.875rem, 1.5rem + 1.875vw, 2.25rem);
+}
+
+/* ===================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================== */
+
+/* Hint to browser about potential animations */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+.animation-complete {
+  will-change: auto;
+}
+
+/* Optimize font loading */
+@font-face {
+  font-display: swap; /* Show fallback font while loading */
 }
 
 /* ===================================

@@ -1,15 +1,43 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaTerminal } from 'react-icons/fa';
 import { personalInfo } from '../data/personalInfo';
+import { useState, useEffect } from 'react';
 
 export default function Hero({ isDark }) {
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Simplified animation variants for mobile
+  const containerVariants = isMobile ? {
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+  } : {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+  };
+
+  const transition = isMobile ? { duration: 0.3 } : { 
+    duration: 0.8, 
+    ease: [0.43, 0.13, 0.23, 0.96] 
+  };
+
   return (
     <section 
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24"
     >
-      {/* Grain texture overlay */}
-      <div className="grain absolute inset-0 pointer-events-none opacity-50" />
+      {/* Grain texture overlay - removed on mobile for better performance */}
+      {!isMobile && <div className="grain absolute inset-0 pointer-events-none opacity-50" />}
       
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neutral-100/50 dark:to-neutral-900/50 pointer-events-none" />
@@ -19,73 +47,30 @@ export default function Hero({ isDark }) {
           
           {/* LEFT COLUMN: Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.8, 
-              ease: [0.43, 0.13, 0.23, 0.96] 
-            }}
+            initial={containerVariants.initial}
+            animate={containerVariants.animate}
+            transition={transition}
             className="relative z-10"
           >
-            {/* Status Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-semibold mb-6 backdrop-blur-sm"
-            >
-              <motion.div 
-                className="w-2 h-2 bg-accent-primary rounded-full"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [1, 0.7, 1]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+            {/* Status Badge - SIMPLIFIED on mobile (no pulsing animation) */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-semibold mb-6 backdrop-blur-sm">
+              <div className="w-2 h-2 bg-accent-primary rounded-full" />
               Available for work
-            </motion.div>
+            </div>
 
-            {/* Main Heading - Better responsive sizing */}
+            {/* Main Heading - NO staggered animation on mobile */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 tracking-tight">
-              <motion.span 
-                className="block mb-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-              >
-                Full Stack
-              </motion.span>
-              <motion.span 
-                className="text-gradient block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                Developer
-              </motion.span>
+              <span className="block mb-2">Full Stack</span>
+              <span className="text-gradient block">Developer</span>
             </h1>
 
-            {/* Bio - Improved readability */}
-            <motion.p 
-              className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-xl leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
+            {/* Bio */}
+            <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-xl leading-relaxed">
               {personalInfo.bio}
-            </motion.p>
+            </p>
 
             {/* Call-to-Action Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <a
                 href="#contact"
                 className="group px-8 py-4 bg-accent-primary hover:bg-accent-hover text-white font-semibold rounded-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent-primary/30 text-center inline-flex items-center justify-center gap-2"
@@ -114,41 +99,34 @@ export default function Hero({ isDark }) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </a>
-            </motion.div>
+            </div>
 
-            {/* Social Links - Improved design */}
-            <motion.div 
-              className="flex gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-            >
+            {/* Social Links - NO individual hover animations on mobile */}
+            <div className="flex gap-3">
               {[
                 { icon: FaGithub, href: personalInfo.social.github, label: 'GitHub' },
                 { icon: FaLinkedin, href: personalInfo.social.linkedin, label: 'LinkedIn' },
                 { icon: FaEnvelope, href: `mailto:${personalInfo.email}`, label: 'Email' },
               ].map((social, i) => (
-                <motion.a
+                <a
                   key={i}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-12 h-12 flex items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:shadow-md"
+                  className="w-12 h-12 flex items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 hover:border-accent-primary dark:hover:border-accent-primary transition-colors hover:shadow-md"
                 >
                   <social.icon className="w-5 h-5" />
-                </motion.a>
+                </a>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: Code Block */}
+          {/* RIGHT COLUMN: Code Block - SIMPLIFIED on mobile */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ 
+            initial={isMobile ? { opacity: 0 } : { opacity: 0, x: 30 }}
+            animate={isMobile ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            transition={isMobile ? { duration: 0.3, delay: 0.1 } : { 
               duration: 0.8, 
               delay: 0.3,
               ease: [0.43, 0.13, 0.23, 0.96] 
@@ -178,14 +156,9 @@ export default function Hero({ isDark }) {
                 </div>
               </div>
 
-              {/* Code Content */}
+              {/* Code Content - NO staggered animations on mobile */}
               <div className="font-mono text-sm space-y-2 relative z-10">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="space-y-1 text-neutral-800 dark:text-neutral-200"
-                >
+                <div className="space-y-1 text-neutral-800 dark:text-neutral-200">
                   <p>
                     <span className="text-purple-600 dark:text-purple-400">const</span>{' '}
                     <span className="text-blue-600 dark:text-blue-400">developer</span>{' '}
@@ -214,16 +187,10 @@ export default function Hero({ isDark }) {
                   </p>
                   
                   {personalInfo.codeBlock?.skills?.slice(0, 4).map((skill, i, arr) => (
-                    <motion.p 
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.6 + (i * 0.1) }}
-                      className="pl-8"
-                    >
+                    <p key={i} className="pl-8">
                       <span className="text-green-600 dark:text-green-400">'{skill}'</span>
                       {i < arr.length - 1 && <span className="text-neutral-600 dark:text-neutral-400">,</span>}
-                    </motion.p>
+                    </p>
                   ))}
                   
                   <p className="pl-4">
@@ -235,91 +202,99 @@ export default function Hero({ isDark }) {
                     <span className="text-neutral-600 dark:text-neutral-400">{'}'}</span>
                     <span className="text-neutral-600 dark:text-neutral-400">;</span>
                   </p>
-                </motion.div>
+                </div>
 
-                {/* Blinking cursor */}
-                <motion.div 
-                  className="flex items-center gap-1 mt-4"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <span className="text-neutral-600 dark:text-neutral-400">$</span>
+                {/* Blinking cursor - REMOVED on mobile */}
+                {!isMobile && (
                   <motion.div 
-                    className="w-2 h-4 bg-accent-primary"
-                    animate={{ opacity: [1, 0] }}
-                    transition={{
-                      duration: 0.8,
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  />
-                </motion.div>
+                    className="flex items-center gap-1 mt-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.2 }}
+                  >
+                    <span className="text-neutral-600 dark:text-neutral-400">$</span>
+                    <motion.div 
+                      className="w-2 h-4 bg-accent-primary"
+                      animate={{ opacity: [1, 0] }}
+                      transition={{
+                        duration: 0.8,
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                      }}
+                    />
+                  </motion.div>
+                )}
               </div>
             </div>
 
-            {/* Floating accent elements */}
-            <motion.div
-              className="absolute -top-6 -right-6 w-24 h-24 bg-accent-primary/10 rounded-full blur-2xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            
-            <motion.div
-              className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent-secondary/10 rounded-full blur-2xl"
-              animate={{
-                scale: [1.2, 1, 1.2],
-                opacity: [0.3, 0.5, 0.3]
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
+            {/* Floating accent elements - REMOVED on mobile */}
+            {!isMobile && (
+              <>
+                <motion.div
+                  className="absolute -top-6 -right-6 w-24 h-24 bg-accent-primary/10 rounded-full blur-2xl"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                <motion.div
+                  className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent-secondary/10 rounded-full blur-2xl"
+                  animate={{
+                    scale: [1.2, 1, 1.2],
+                    opacity: [0.3, 0.5, 0.3]
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </>
+            )}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
+      {/* Scroll indicator - REMOVED on mobile */}
+      {!isMobile && (
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="flex flex-col items-center gap-2 text-neutral-400 dark:text-neutral-600"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
         >
-          <span className="text-xs font-medium">Scroll</span>
-          <svg 
-            className="w-5 h-5" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="flex flex-col items-center gap-2 text-neutral-400 dark:text-neutral-600"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-            />
-          </svg>
+            <span className="text-xs font-medium">Scroll</span>
+            <svg 
+              className="w-5 h-5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+              />
+            </svg>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </section>
   );
 }

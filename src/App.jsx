@@ -1,21 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
 
-// Layout Components
+// Layout Components - Load immediately (above the fold)
 import Navigation from './components/Navigation';
+import Hero from './components/Hero';
 import Footer from './components/Footer';
 
-// Section Components
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-
-// Feature Components
+// Feature Components - Load immediately (needed for interaction)
 import CommandPalette from './components/CommandPalette';
 import MobileMenu from './components/MobileMenu';
+
+// Section Components - LAZY LOAD (below the fold)
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const Experience = lazy(() => import('./components/Experience'));
+const Contact = lazy(() => import('./components/Contact'));
+
+// Loading fallback component
+const LoadingFallback = () => (
+  <div className="min-h-[400px] flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-accent-primary/30 border-t-accent-primary rounded-full animate-spin" />
+  </div>
+);
 
 function App() {
   const [isDark, setIsDark] = useState(true);
@@ -103,12 +110,29 @@ function App() {
 
       {/* Main Content */}
       <main id="main">
+        {/* Hero - Always load first (above the fold) */}
         <Hero isDark={isDark} />
-        <About isDark={isDark} />
-        <Projects isDark={isDark} />
-        <Skills isDark={isDark} />
-        <Experience isDark={isDark} />
-        <Contact isDark={isDark} />
+        
+        {/* Below-the-fold sections - Lazy loaded with Suspense */}
+        <Suspense fallback={<LoadingFallback />}>
+          <About isDark={isDark} />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Projects isDark={isDark} />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Skills isDark={isDark} />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Experience isDark={isDark} />
+        </Suspense>
+        
+        <Suspense fallback={<LoadingFallback />}>
+          <Contact isDark={isDark} />
+        </Suspense>
       </main>
 
       {/* Footer */}

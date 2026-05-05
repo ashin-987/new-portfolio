@@ -1,30 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="var(--accent-primary)" />
-
-    <title>Your Name | Full Stack Developer Portfolio</title>
-    <meta name="description" content="Full Stack Developer specializing in React, Node.js, and modern web technologies." />
-
-    <!-- Open Graph (for sharing links) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Your Name | Full Stack Developer" />
-    <meta property="og:description" content="Full Stack Developer Portfolio" />
-
-    <!-- Optional icons (place these inside /public) -->
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-  </head>
-
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     
-    <div id="root"></div>
-
-    <!-- Vite entry point (IMPORTANT) -->
+    <!-- Viewport for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Full Stack Developer portfolio showcasing web development projects, skills, and experience." />
+    <meta name="keywords" content="web developer, full stack, react, portfolio" />
+    <meta name="author" content="Your Name" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Your Name - Full Stack Developer" />
+    <meta property="og:description" content="Full Stack Developer portfolio" />
+    <meta property="og:image" content="/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Your Name - Full Stack Developer" />
+    <meta name="twitter:description" content="Full Stack Developer portfolio" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- ============================================
+         PERFORMANCE OPTIMIZATIONS
+         ============================================ -->
+    
+    <!-- Preconnect to external domains (if you use Google Fonts, analytics, etc.) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    
+    <!-- DNS Prefetch for third-party resources -->
+    <!-- <link rel="dns-prefetch" href="https://www.google-analytics.com"> -->
+    
+    <!-- Preload critical assets -->
+    <!-- Only preload CRITICAL resources that are needed immediately -->
+    <!-- Example: Hero image -->
+    <!-- <link rel="preload" as="image" href="/hero-image.webp" fetchpriority="high"> -->
+    
+    <!-- Preload fonts (if using custom fonts) -->
+    <!-- <link rel="preload" as="font" href="/fonts/inter.woff2" type="font/woff2" crossorigin> -->
+    
+    <!-- Critical CSS inline (optional - for above-the-fold content) -->
+    <!-- This can be generated during build process -->
+    <style>
+      /* Prevent flash of unstyled content */
+      html {
+        background-color: #fafaf9;
+        color: #1c1917;
+      }
+      
+      html.dark {
+        background-color: #0c0a09;
+        color: #fafaf9;
+      }
+      
+      /* Loading spinner styles (inline for instant display) */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e7e5e4;
+        border-top-color: #2563eb;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin: 20vh auto;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Hide spinner once React loads */
+      .loaded .loading-spinner {
+        display: none;
+      }
+    </style>
+    
+    <title>Your Name - Full Stack Developer</title>
+  </head>
+  
+  <body>
+    <!-- Root element for React -->
+    <div id="root">
+      <!-- Loading spinner shown before React hydrates -->
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Main JavaScript bundle -->
+    <!-- type="module" enables ES6 modules and defers execution -->
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Noscript fallback for accessibility -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>This portfolio requires JavaScript to be enabled. Please enable JavaScript in your browser settings.</p>
+      </div>
+    </noscript>
+    
+    <!-- 
+      PERFORMANCE NOTES:
+      
+      1. The <script type="module"> automatically defers execution
+      2. Vite will inject CSS automatically during build
+      3. Use rel="preload" sparingly - only for critical resources
+      4. Consider using rel="prefetch" for resources needed on next page
+      5. Avoid loading too many third-party scripts (analytics, fonts, etc.)
+      
+      BEFORE ADDING ANY THIRD-PARTY SCRIPT:
+      - Ask: Is this absolutely necessary?
+      - Check: What's the performance cost?
+      - Consider: Can I defer/async load this?
+      - Test: Impact on Lighthouse score
+    -->
   </body>
 </html>
