@@ -235,13 +235,6 @@ export default function Contact({ isDark }) {
                 ))}
               </div>
             </div>
-
-            {/* Fun Fact */}
-            <div className="p-6 rounded-2xl border border-accent-primary/20 bg-accent-primary/5">
-              <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                💡 <strong>Fun fact:</strong> I typically respond within 24 hours. If you don't hear back, check your spam folder or feel free to ping me on LinkedIn!
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

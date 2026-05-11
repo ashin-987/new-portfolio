@@ -1,38 +1,31 @@
-export const experience = [
+const experiences = [
   {
-    role: 'Senior Full Stack Developer',
-    company: 'Tech Company Inc.',
-    period: '2022 - Present',
-    location: 'San Francisco, CA',
-    responsibilities: [
-      'Led development of microservices architecture serving 100k+ daily users',
-      'Mentored junior developers and conducted code reviews',
-      'Implemented CI/CD pipelines reducing deployment time by 70%',
-      'Collaborated with design team to improve user experience',
+    id: 1,
+    role: "AI/ML Intern",
+    company: "Icanio Technologies",
+    location: "Tirunelveli, Tamil Nadu",
+    period: "May 2025 - June 2025",
+    description: "Worked on Artificial Intelligence, Machine Learning, NLP, and Generative AI concepts through hands-on projects and practical implementation using modern AI frameworks and tools.",
+    achievements: [
+      "Built AI-powered applications using Python, Flask, LangChain, and OpenAI APIs",
+      "Developed RAG-based chatbot and PDF query systems using LLM frameworks",
+      "Worked on NLP techniques, vector databases, and prompt engineering for Generative AI applications"
     ],
+    technologies: ["Python", "Flask", "Machine Learning", "NLP", "LangChain", "ChromaDB", "Generative AI"]
   },
   {
-    role: 'Full Stack Developer',
-    company: 'Startup Solutions',
-    period: '2020 - 2022',
-    location: 'Remote',
-    responsibilities: [
-      'Built and maintained multiple client-facing web applications',
-      'Integrated third-party APIs and payment gateways',
-      'Optimized database queries improving performance by 50%',
-      'Participated in agile development and sprint planning',
+    id: 2,
+    role: "Frontend Developer Intern",
+    company: "TechNeat Info Solutions Pvt Ltd",
+    location: "Nagercoil, Tamil Nadu",
+    period: "May 2024 - June 2024",
+    description: "Worked on modern frontend web development technologies and UI design concepts by building responsive and interactive web applications.",
+    achievements: [
+      "Developed responsive web pages using HTML, CSS, JavaScript, and Bootstrap",
+      "Built interactive frontend components and single-page applications using React",
+      "Designed UI layouts and prototypes using Figma for modern web interfaces"
     ],
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'Digital Agency',
-    period: '2019 - 2020',
-    location: 'New York, NY',
-    responsibilities: [
-      'Developed responsive web interfaces using React and Vue.js',
-      'Collaborated with UX designers to implement pixel-perfect designs',
-      'Implemented accessibility features following WCAG guidelines',
-      'Created reusable component libraries',
-    ],
-  },
+    technologies: ["HTML", "CSS", "JavaScript", "React", "Bootstrap", "Figma"]
+  }
 ];
+export default experiences;

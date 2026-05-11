@@ -1,27 +1,26 @@
 import { FaCode, FaLightbulb, FaRocket, FaHeart } from 'react-icons/fa';
 
 export const personalInfo = {
-  name: "Your Name",
-  role: "Full Stack Developer",
+  name: "ASHIN S H",
+  role: "Frontend Developer | Embedded Systems Enthusiast",
   username: "developer",
-  email: "your.email@example.com",
+  email: "ashinsh45@gmail.com",
   location: "Remote",
-  bio: "I'm a passionate Full Stack Developer who loves crafting elegant solutions to complex problems. I specialize in React, Node.js, and modern web technologies.",
+  bio: "Frontend Developer with a strong interest in Embedded Systems. I build responsive web applications and have a solid foundation in Java (OOP & DSA), along with experience in Embedded C and Arduino.",
   
   // Code block for Hero section
   codeBlock: {
     skills: [
       "React",
-      "Node.js",
-      "TypeScript",
-      "PostgreSQL",
-      "AWS"
+      "JavaScript",
+      "Java",
+      "HTML/CSS",
     ]
   },
 
   // Social Links
   social: {
-    github: "https://github.com/yourusername",
+    github: "https://github.com/ashin-987",
     linkedin: "https://linkedin.com/in/yourusername",
     twitter: "https://twitter.com/yourusername",
   }
@@ -30,38 +29,39 @@ export const personalInfo = {
 // About Section Data
 export const aboutData = {
   paragraphs: [
-    "I'm a passionate Full Stack Developer who loves building elegant solutions to complex problems. With a strong foundation in both frontend and backend technologies, I create seamless user experiences backed by robust, scalable architectures.",
-    "My journey in web development started with curiosity and grew into a deep commitment to craftsmanship. I believe in writing clean, maintainable code and staying current with the latest technologies and best practices."
+    "I’m a Frontend Developer with a strong interest in Embedded Systems and VLSI. I enjoy building responsive and user-friendly web applications using React, while also working on real-world hardware projects using Embedded C and Arduino.",
+    "My experience includes developing projects like an advanced gas leakage detection system and AI-based web solutions. I focus on writing clean, maintainable code and building systems that solve practical problems.",
+    "I also have a strong foundation in Java, focusing on object-oriented programming and data structures."
   ],
   
   values: [
     {
       icon: FaCode,
-      title: "Clean Code",
-      description: "I write code that's easy to read, maintain, and scale. Quality over quantity, always."
+      title: "Real-World Problem Solving",
+      description: "I build solutions that solve practical problems, from web applications to embedded systems like gas leakage detection."
     },
     {
       icon: FaLightbulb,
-      title: "Problem Solver",
-      description: "I love tackling complex challenges and finding elegant, efficient solutions."
+      title: "Frontend + Embedded Mindset",
+      description: "I enjoy combining software and hardware, building both user-friendly interfaces and real-world systems."
     },
     {
       icon: FaRocket,
-      title: "Fast Learner",
-      description: "Technology evolves rapidly, and I'm always learning new tools and techniques."
+      title: "Strong Fundamentals",
+      description: "I focus on writing clean code and improving problem-solving skills through Java, OOP, and data structures."
     },
     {
       icon: FaHeart,
-      title: "User-Focused",
-      description: "Every line of code I write is aimed at creating better experiences for users."
+      title: "Continuous Learning",
+      description: "Currently exploring AUTOSAR, VLSI, and modern system design to expand my technical depth."
     }
   ],
   
   stats: [
-    { value: "3+", label: "Years Experience" },
-    { value: "20+", label: "Projects Completed" },
-    { value: "100%", label: "Client Satisfaction" },
-    { value: "∞", label: "Coffee Consumed" }
+    { value: "2+", label: "Years Learning & Building" },
+    { value: "5+", label: "Projects Completed" },
+    { value: "Java + React", label: "Core Skillset" },
+    { value: "Embedded Systems", label: "Hands-on Experience" }
   ]
 };
 

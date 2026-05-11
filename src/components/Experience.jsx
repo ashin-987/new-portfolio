@@ -1,51 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from 'react-icons/fa';
-
-// Add this to your data/experience.js or import from there
-const experiences = [
-  {
-    id: 1,
-    role: "Senior Full Stack Developer",
-    company: "Tech Company",
-    location: "Remote",
-    period: "2023 - Present",
-    description: "Leading development of scalable web applications using React and Node.js. Mentoring junior developers and architecting cloud solutions.",
-    achievements: [
-      "Reduced API response time by 40% through optimization",
-      "Led migration to microservices architecture",
-      "Implemented CI/CD pipeline reducing deployment time by 60%"
-    ],
-    technologies: ["React", "Node.js", "AWS", "Docker", "PostgreSQL"]
-  },
-  {
-    id: 2,
-    role: "Full Stack Developer",
-    company: "Startup Inc",
-    location: "San Francisco, CA",
-    period: "2021 - 2023",
-    description: "Developed and maintained full-stack applications. Collaborated with cross-functional teams to deliver high-quality products.",
-    achievements: [
-      "Built real-time chat feature serving 10k+ concurrent users",
-      "Improved test coverage from 40% to 85%",
-      "Launched 3 major product features ahead of schedule"
-    ],
-    technologies: ["React", "Express", "MongoDB", "Redis"]
-  },
-  {
-    id: 3,
-    role: "Junior Developer",
-    company: "Digital Agency",
-    location: "New York, NY",
-    period: "2020 - 2021",
-    description: "Worked on client projects building responsive websites and web applications. Gained experience in modern web development practices.",
-    achievements: [
-      "Delivered 12+ client projects on time and within budget",
-      "Improved website performance scores by average of 30%",
-      "Implemented responsive designs for mobile-first approach"
-    ],
-    technologies: ["HTML", "CSS", "JavaScript", "WordPress"]
-  }
-];
+import experiences from '../data/experience';
 
 export default function Experience({ isDark }) {
   return (
@@ -68,7 +23,7 @@ export default function Experience({ isDark }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-black mb-4">
-            Work <span className="text-gradient">Experience</span>
+            Intern <span className="text-gradient">Experience</span>
           </h2>
           <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
             My professional journey and key achievements

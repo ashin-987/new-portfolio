@@ -114,36 +114,6 @@ export default function Skills({ isDark }) {
             </motion.div>
           ))}
         </div>
-
-        {/* Additional Tech Stack (Optional) */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-xl font-bold mb-6 text-neutral-700 dark:text-neutral-300">
-            Also Experienced With
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'Docker', 'AWS', 'CI/CD', 'Jest', 'Cypress', 
-              'GraphQL', 'WebSocket', 'Redis', 'PostgreSQL'
-            ].map((tech, i) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + (i * 0.05) }}
-                className="px-4 py-2 text-sm font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:-translate-y-1"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

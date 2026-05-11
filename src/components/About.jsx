@@ -1,47 +1,12 @@
 import { motion } from 'framer-motion';
 import { FaCode, FaLightbulb, FaRocket, FaHeart } from 'react-icons/fa';
-
-// Add this data to your personalInfo.js
-const aboutData = {
-  paragraphs: [
-    "I'm a passionate Full Stack Developer who loves building elegant solutions to complex problems. With a strong foundation in both frontend and backend technologies, I create seamless user experiences backed by robust, scalable architectures.",
-    "My journey in web development started with curiosity and grew into a deep commitment to craftsmanship. I believe in writing clean, maintainable code and staying current with the latest technologies and best practices.",
-  ],
-  values: [
-    {
-      icon: FaCode,
-      title: "Clean Code",
-      description: "I write code that's easy to read, maintain, and scale. Quality over quantity, always."
-    },
-    {
-      icon: FaLightbulb,
-      title: "Problem Solver",
-      description: "I love tackling complex challenges and finding elegant, efficient solutions."
-    },
-    {
-      icon: FaRocket,
-      title: "Fast Learner",
-      description: "Technology evolves rapidly, and I'm always learning new tools and techniques."
-    },
-    {
-      icon: FaHeart,
-      title: "User-Focused",
-      description: "Every line of code I write is aimed at creating better experiences for users."
-    }
-  ],
-  stats: [
-    { value: "3+", label: "Years Experience" },
-    { value: "20+", label: "Projects Completed" },
-    { value: "100%", label: "Client Satisfaction" },
-    { value: "∞", label: "Coffee Consumed" }
-  ]
-};
+import { aboutData } from '../data/personalInfo';
 
 export default function About({ isDark }) {
   return (
     <section 
       id="about" 
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-16 lg:py-20 overflow-hidden"
     >
       {/* Background Elements */}
       <div className="grain absolute inset-0 pointer-events-none opacity-50" />
@@ -57,7 +22,7 @@ export default function About({ isDark }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-black mb-4">
+          <h2 className="text-3xl lg:text-4xl font-black mb-4">
             About <span className="text-gradient">Me</span>
           </h2>
           <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
@@ -66,7 +31,7 @@ export default function About({ isDark }) {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 mb-12">
           
           {/* Left: Story */}
           <motion.div
@@ -79,7 +44,7 @@ export default function About({ isDark }) {
             {aboutData.paragraphs.map((paragraph, i) => (
               <p 
                 key={i}
-                className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed"
+                className="text-base text-neutral-700 dark:text-neutral-300 leading-relaxed"
               >
                 {paragraph}
               </p>
@@ -114,9 +79,9 @@ export default function About({ isDark }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + (i * 0.1) }}
-                className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="text-4xl lg:text-5xl font-black text-accent-primary mb-2">
+                <div className="text-3xl lg:text-4xl font-black text-accent-primary mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
@@ -146,7 +111,7 @@ export default function About({ isDark }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 + (i * 0.1) }}
-                className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:-translate-y-1 hover:shadow-lg group"
+                className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-accent-primary dark:hover:border-accent-primary transition-all hover:-translate-y-1 hover:shadow-lg group"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center mb-4 group-hover:bg-accent-primary group-hover:scale-110 transition-all">
                   <value.icon className="w-6 h-6 text-accent-primary group-hover:text-white transition-colors" />

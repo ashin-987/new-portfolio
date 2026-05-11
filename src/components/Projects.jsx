@@ -99,7 +99,7 @@ export default function Projects({ isDark }) {
           className="text-center mt-16"
         >
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/ashin-987"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 border-2 border-neutral-300 dark:border-neutral-700 hover:border-accent-primary dark:hover:border-accent-primary font-semibold rounded-lg transition-all hover:-translate-y-1"
